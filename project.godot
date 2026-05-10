@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="dejadew_proto"
-run/main_scene="uid://disb1e3r2q10h"
+run/main_scene="uid://cj1oes1g8em5o"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 config/subwindows/embed_subwindows=true

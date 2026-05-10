@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cj1oes1g8em5o"]
+
+[ext_resource type="PackedScene" uid="uid://d4j1f2vhrbsfj" path="res://Scenes/copystack.tscn" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://c3anwsnhew1dk" path="res://Scenes/scene.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://dva7fugyjgo62" path="res://Scenes/player.tscn" id="2_8gbba"]
+
+[node name="Main" type="Node" unique_id=418852849]
+
+[node name="Node" parent="." unique_id=185230924 instance=ExtResource("1_8gbba")]
+
+[node name="Scene" parent="Node/PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport" parent_id_path=PackedInt32Array(185230924, 461449268) index="0" unique_id=894565762 instance=ExtResource("1_bo1nx")]
+
+[node name="Player" parent="Node/PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport" parent_id_path=PackedInt32Array(185230924, 461449268) index="1" unique_id=774358645 instance=ExtResource("2_8gbba")]
+
+[editable path="Node"]
