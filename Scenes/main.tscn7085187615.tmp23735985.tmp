@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://disb1e3r2q10h"]
+
+[ext_resource type="Script" uid="uid://ctn6od7b4rkdw" path="res://Scenes/main.gd" id="1_6bp64"]
+[ext_resource type="Shader" uid="uid://dl33ayubf2ia6" path="res://Assets/shaders/lcd_post_process.gdshader" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://dva7fugyjgo62" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="Shader" uid="uid://x0pbvbqr7ku1" path="res://Assets/shaders/post_process_blur.gdshader" id="1_kry3j"]
+[ext_resource type="Shader" uid="uid://b87y62ydlahl8" path="res://Assets/shaders/pp_band-dither.gdshader" id="3_21xkr"]
+[ext_resource type="Texture2D" uid="uid://b0ub3tqjyw46f" path="res://Assets/shaders/psxdither.png" id="4_6bp64"]
+[ext_resource type="PackedScene" uid="uid://c3anwsnhew1dk" path="res://Scenes/scene.tscn" id="5_kry3j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_344ge"]
+shader = ExtResource("1_kry3j")
+shader_parameter/blur_scale = Vector2(0.35, 0.35)
+shader_parameter/blur_samples = 20.0
+shader_parameter/blur_brightness = 1.5
+shader_parameter/enabled = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
+shader = ExtResource("1_bo1nx")
+shader_parameter/enabled = false
+shader_parameter/lcd_opacity = 0.5
+shader_parameter/scanline_gap = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hptm8"]
+shader = ExtResource("3_21xkr")
+shader_parameter/dither_tex = ExtResource("4_6bp64")
+shader_parameter/col_depth = 15.0
+shader_parameter/dither_banding = true
+
+[node name="Main" type="Node" unique_id=1659495605]
+script = ExtResource("1_6bp64")
+
+[node name="PSXLayer" type="CanvasLayer" parent="." unique_id=1167419297]
+layer = 0
+
+[node name="BlurPostProcess" type="SubViewportContainer" parent="PSXLayer" unique_id=916421603]
+material = SubResource("ShaderMaterial_344ge")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PSXLayer/BlurPostProcess" unique_id=1716442673]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="LCDOverlay" type="SubViewportContainer" parent="PSXLayer/BlurPostProcess/SubViewport" unique_id=1460491723]
+material = SubResource("ShaderMaterial_ynf5e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PSXLayer/BlurPostProcess/SubViewport/LCDOverlay" unique_id=1546305606]
+handle_input_locally = false
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="DitherBanding" type="SubViewportContainer" parent="PSXLayer/BlurPostProcess/SubViewport/LCDOverlay/SubViewport" unique_id=1800324253]
+material = SubResource("ShaderMaterial_hptm8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="PSXLayer/BlurPostProcess/SubViewport/LCDOverlay/SubViewport/DitherBanding" unique_id=1519124247]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(384, 216)
+render_target_update_mode = 4
+
+[node name="Scene Objects" parent="PSXLayer/BlurPostProcess/SubViewport/LCDOverlay/SubViewport/DitherBanding/SubViewport" unique_id=894565762 instance=ExtResource("5_kry3j")]
+
+[node name="Player" parent="PSXLayer/BlurPostProcess/SubViewport/LCDOverlay/SubViewport/DitherBanding/SubViewport" unique_id=1062962417 instance=ExtResource("1_jjgbg")]
+slide_on_ceiling = false
+
+[editable path="PSXLayer/BlurPostProcess/SubViewport/LCDOverlay/SubViewport/DitherBanding/SubViewport/Player"]

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dva7fugyjgo62"]
+
+[ext_resource type="Script" uid="uid://dy5jogv8enf33" path="res://Scenes/player.gd" id="1_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://c8vvcqmtcbb2t" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Character/glTF/Character.gltf" id="1_v0iea"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
+radius = 0.905
+height = 3.155
+
+[node name="Player" type="CharacterBody3D" unique_id=774358645]
+script = ExtResource("1_cvnsp")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1555820102]
+
+[node name="Character" parent="Pivot" unique_id=1068729882 instance=ExtResource("1_v0iea")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=230897183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6278584, 0)
+shape = SubResource("CapsuleShape3D_cvnsp")
+
+[node name="top light3" type="SpotLight3D" parent="." unique_id=1132142526]
+transform = Transform3D(-1, -4.3711374e-08, 7.571034e-08, -2.2626665e-08, 0.9659258, 0.25881907, -8.444391e-08, 0.25881907, -0.9659258, 0, 3.9747145, -5.371213)
+light_color = Color(0.78039217, 0.69803923, 1, 1)
+light_energy = 1.64
+light_specular = 0.0
+spot_range = 7.0
+spot_attenuation = -0.19
+spot_angle = 18.55142
+spot_angle_attenuation = 4.4680386e-05
+
+[node name="botleftlight" type="SpotLight3D" parent="." unique_id=1900834347]
+transform = Transform3D(-1, -4.371136e-08, 7.571033e-08, 1.5180767e-08, -0.93969256, -0.34202033, 8.609461e-08, -0.34202033, 0.93969256, 0, -0.3546567, 5.9354553)
+light_color = Color(0.78039217, 0.69803923, 1, 1)
+light_specular = 0.0
+spot_range = 10.0
+spot_attenuation = -0.19
+spot_angle = 19.145182
+spot_angle_attenuation = 4.4680386e-05
+
+[node name="top light2" type="SpotLight3D" parent="." unique_id=860955552]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 5.9747148, 1.628787)
+light_color = Color(0.78039217, 0.69803923, 1, 1)
+light_energy = 2.473
+light_specular = 0.0
+spot_range = 6.0
+spot_attenuation = -0.19
+spot_angle = 25.097172
+spot_angle_attenuation = 4.4680386e-05
