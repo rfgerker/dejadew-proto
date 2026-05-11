@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bvt2tao57hiba"]
+
+[sub_resource type="Environment" id="Environment_jjgbg"]
+background_mode = 1
+background_color = Color(0.19774207, 0.00014612496, 0.6167373, 1)
+background_energy_multiplier = 0.81
+ambient_light_color = Color(1, 1, 1, 1)
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.6650949, 0.4671334, 0.69754195, 1)
+fog_light_energy = 0.67
+fog_density = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=1185009421]
+environment = SubResource("Environment_jjgbg")
