@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3anwsnhew1dk"]
 
 [ext_resource type="Material" uid="uid://c2to67v55oatp" path="res://Assets/shaders/grass shader/materials/grass_01/grass_01.tres" id="1_fi6k0"]
-[ext_resource type="Material" uid="uid://bra6ug2wjmj0j" path="res://Assets/assets/BinbunGrass/src/materials/grass_01/grass_ground_01.tres" id="1_lnogb"]
+[ext_resource type="Material" uid="uid://bra6ug2wjmj0j" path="res://Assets/shaders/grass shader/materials/grass_01/grass_ground_01.tres" id="1_lnogb"]
 [ext_resource type="PackedScene" uid="uid://o88myw3m0ukt" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Cloud_3.gltf" id="2_8t5iv"]
 [ext_resource type="PackedScene" uid="uid://rsjoielm6786" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Cloud_1.gltf" id="3_yp48q"]
 [ext_resource type="PackedScene" uid="uid://cvnivnltkvoo8" path="res://Assets/Ultimate Platformer Pack - Dec 2021/Nature/glTF/Cloud_2.gltf" id="4_3bdrj"]
@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9192982, 0)
 mesh = SubResource("BoxMesh_jjgbg")
 
 [node name="grassblade" type="MeshInstance3D" parent="Ground/CollisionShape3D" unique_id=2120374952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3668847, 0)
+transform = Transform3D(1, 0, 0, 0, 2.655196, 0, 0, 0, 1, 0, -0.5039792, 0)
 mesh = SubResource("QuadMesh_lnogb")
 surface_material_override/0 = ExtResource("1_fi6k0")
 
